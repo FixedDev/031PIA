@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <form method="post">
                             {% csrf_token %}
-                            <div class="form-group">
+                            <div class="form-group" style="display: block">
                                 {{ form.as_p }}
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Guardar</button>
