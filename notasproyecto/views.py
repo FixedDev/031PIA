@@ -18,7 +18,7 @@ def crear_nota(request):
             return redirect('lista_notas')
     else:
         form = NotaForm()
-    return render(request, 'crear_nota.html', {'form': form})
+    return render(request, 'editar_nota.html', {'form': form})
 
 def editar_nota(request, id):
     nota = get_object_or_404(Nota, id=id)
