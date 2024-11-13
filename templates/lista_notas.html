@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Notas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h1>Notas</h1>
+                    <a href="{% url 'crear_nota' %}" class="btn btn-primary">Crear Nueva Nota</a>
+                </div>
+                <ul class="list-group">
+                    {% for nota in notas %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ nota.titulo }}</span>
+                            <div>
+                                <a href="{% url 'editar_nota' nota.id %}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                                <a href="{% url 'eliminar_nota' nota.id %}" class="btn btn-sm btn-outline-danger ml-2">Eliminar</a>
+                            </div>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item text-center text-muted">No hay notas disponibles</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

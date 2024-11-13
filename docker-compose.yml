@@ -1,0 +1,24 @@
+services:
+  mysql:
+    container_name: mysql
+    image: "mysql:8.1"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12312a23
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: 'pia'
+    volumes:
+      - "mysql-vol:/var/lib/mysql"
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
+      timeout: 15s
+      interval: 5s
+      retries: 10
+  web:
+    build: .
+    depends_on:
+       mysql:
+          condition: service_healthy
+    ports:
+      - "80:80"
+volumes:
+  mysql-vol:
