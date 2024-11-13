@@ -19,6 +19,6 @@ services:
        mysql:
           condition: service_healthy
     ports:
-      - "80:80"
+      - "8000:8080"
 volumes:
   mysql-vol:

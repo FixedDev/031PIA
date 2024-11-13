@@ -11,5 +11,5 @@ COPY templates templates
 COPY manage.py manage.py
 COPY start.sh start.sh
 
-EXPOSE 80
+EXPOSE 8080
 CMD ["sh", "start.sh"]
