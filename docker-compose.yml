@@ -1,6 +1,5 @@
 services:
   mysql:
-    container_name: mysql
     image: "mysql:8.1"
     environment:
       MYSQL_ROOT_PASSWORD: 12312a23
@@ -15,11 +14,10 @@ services:
       retries: 10
   web:
     build: .
-    image: pianotas-web
     depends_on:
        mysql:
           condition: service_healthy
     ports:
-      - "8000:8080"
+      - "80:8080"
 volumes:
   mysql-vol:
